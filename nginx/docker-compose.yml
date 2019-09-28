@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+  image: nginx
+  volumes:
+   - .:/etc/nginx/conf.d/
+   - ./static/:/data/
+  ports:
+   - "8080:80"
+  environment:
+   - NGINX_HOST=rasp-bundle.com
+   - NGINX_PORT=80
+  networks: 
+   - webnet
+  command: 
+    - nginx -g 'damon off;'
+
+networks: 
+  webnet：
